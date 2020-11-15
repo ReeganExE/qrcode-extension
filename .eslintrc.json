@@ -1,0 +1,74 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "globals": {
+    "chrome": true
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
+    "import/prefer-default-export": "off",
+    "arrow-parens": "off",
+    "prefer-template": "off",
+    "no-plusplus": "off",
+    "camelcase": "off",
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off",
+    "implicit-arrow-linebreak": "off",
+    "consistent-return": "off",
+    "react/prop-types": "off",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false,
+        "variables": false
+      }
+    ],
+    "no-confusing-arrow": "off",
+    "no-unused-expressions": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "allowArrowFunctions": false
+      }
+    ],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-shadow": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "plugins": ["react", "jsx-a11y", "import", "prettier", "@typescript-eslint"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".jsx", ".tsx", ".json"]
+      }
+    },
+    "import/extensions": [".js", ".ts", ".mjs", ".jsx", ".tsx"]
+  }
+}

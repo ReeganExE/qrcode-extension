@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES2019",
+    "module": "esNext",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}

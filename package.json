@@ -1,0 +1,96 @@
+{
+  "name": "qr-code",
+  "version": "1.0.0",
+  "description": "QR Code Generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "rimraf dist/* && cross-env NODE_ENV=development webpack serve",
+    "build": "rimraf dist/* && cross-env NODE_ENV=production webpack",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "@types/qrcode": "^1.3.5",
+    "history": "^5.0.0",
+    "lodash": "^4.17.20",
+    "qrcode": "^1.4.4",
+    "query-string": "^6.13.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@types/chrome": "0.0.126",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "@types/styled-components": "^5.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.1",
+    "copy-webpack-plugin": "^6.3.1",
+    "cross-env": "^7.0.2",
+    "dotenv-webpack": "^5.1.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.1.2",
+    "react-refresh": "^0.9.0",
+    "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "^5.0.3",
+    "ts-loader": "^8.0.11",
+    "type-fest": "^0.18.1",
+    "typescript": "^4.2.0-dev.20201103",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-extension-manifest-plugin": "^0.5.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "chrome": "60"
+          }
+        }
+      ],
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ],
+    "plugins": []
+  },
+  "keywords": [],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "author": "Ninh Pham",
+  "license": "MIT"
+}
