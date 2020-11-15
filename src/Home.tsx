@@ -10,12 +10,12 @@ const StyledContainer = styled.div`
 `
 
 const StyledInput = styled.input`
-  padding: 2px;
+  padding: 7px;
   width: 100%;
 `
 
 const StyledInputContainer = styled.div`
-  padding: 6px 11px 5px 3px;
+  padding: 6px 20px 5px 3px;
 `
 
 const DEFAULT_URL = 'https://github.com/ReeganExE/qrcode-extension'
@@ -51,7 +51,7 @@ function Home(): JSX.Element {
         <QRCode text={url} />
       </StyledContainer>
       <StyledInputContainer>
-        <StyledInput onFocus={onFocus} type="text" value={url} onChange={onLinkChange} />
+        <StyledInput autoFocus onFocus={onFocus} type="text" value={url} onChange={onLinkChange} />
       </StyledInputContainer>
     </>
   )
