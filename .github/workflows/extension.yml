@@ -1,0 +1,35 @@
+name: "Extension upload"
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  upload:
+    name: upload
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - uses: actions/checkout@v1
+      - name: install node v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: npm setup
+        run: npm run build
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./seenit.zip ./dist
+      - uses: actions/upload-artifact@v1
+        with:
+          name: zipped-extension
+          path: ./seenit.zip
+      - name: Upload extension
+        uses: Klemensas/chrome-extension-upload-action@v1.3
+        with:
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          app-id: ${{ secrets.APP_ID }}
+          file-name: ./seenit.zip
