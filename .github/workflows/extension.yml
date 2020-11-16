@@ -18,9 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - name: npm build
-        run: npm run build
+      - run: npm ci && npm run build
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./qr-extension.zip ./dist
