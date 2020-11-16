@@ -10,7 +10,6 @@ jobs:
     name: Extension upload
     runs-on: ubuntu-latest
     env:
-      NODE_ENV: production
       APP_ID: lejaemboagmjemhpniglggbmdajgmeln
     steps:
       - uses: actions/checkout@v1
