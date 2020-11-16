@@ -7,7 +7,7 @@ on:
 
 jobs:
   upload:
-    name: upload
+    name: Extension upload
     runs-on: ubuntu-latest
     env:
       NODE_ENV: production
@@ -18,7 +18,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: npm setup
+      - name: npm ci
+        run: npm run build
+      - name: npm build
         run: npm run build
       - uses: montudor/action-zip@v0.1.0
         with:
