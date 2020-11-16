@@ -6,7 +6,7 @@ on:
       - workflow
 
 jobs:
-  upload:
+  Upload Extension:
     name: Extension upload
     runs-on: ubuntu-latest
     env:
@@ -17,7 +17,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci && npm run build
+      - run: npm ci
+      - run: npm run build
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./qr-extension.zip ./dist
