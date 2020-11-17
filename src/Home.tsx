@@ -51,7 +51,14 @@ function Home(): JSX.Element {
         <QRCode text={url} />
       </StyledContainer>
       <StyledInputContainer>
-        <StyledInput autoFocus onFocus={onFocus} type="text" value={url} onChange={onLinkChange} />
+        <StyledInput
+          autoFocus
+          onFocus={onFocus}
+          type="text"
+          title={url}
+          value={url}
+          onChange={onLinkChange}
+        />
       </StyledInputContainer>
     </>
   )
@@ -69,7 +76,7 @@ const QRCode: React.FC<{ text: string }> = ({ text }) => {
         setDataUrl(err.message)
       })
   }, [text])
-  return <img src={dataUrl} alt={text} />
+  return <img src={dataUrl} alt={text} title={text} />
 }
 
 export default Home
