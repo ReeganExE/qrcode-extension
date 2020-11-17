@@ -1,10 +1,8 @@
 name: "Extension upload"
 on:
   push:
-    branches:
-      - master
-      - workflow
-
+    tags:
+      - v*
 jobs:
   UploadExtension:
     name: Extension upload
