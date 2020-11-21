@@ -1,6 +1,13 @@
 # Simple QR Code Generator Extension
 
+Google Chrome: https://chrome.google.com/webstore/detail/qr-code-generator/lejaemboagmjemhpniglggbmdajgmeln
 
+# Development
+
+```
+npm ci
+npm start
+```
 
 # LICENSE
 New BSD License
