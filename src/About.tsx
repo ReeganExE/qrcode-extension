@@ -7,6 +7,9 @@ export const StyledSmall = styled.small`
   }
   a {
     margin-left: 5px;
+    :visited {
+      color: inherit;
+    }
   }
 `
 

@@ -1,34 +1,23 @@
-import { useEffect, useState, useCallback } from 'react'
-import styled from 'styled-components'
-
 import qrcode from 'qrcode'
+import { useCallback, useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { About } from './About'
-
-const StyledContainer = styled.div`
-  margin: 2px auto;
-  text-align: center;
-`
-
-const StyledInput = styled.input`
-  padding: 7px;
-  width: 100%;
-`
-
-const StyledInputContainer = styled.div`
-  padding: 6px 20px 5px 3px;
-`
 
 const DEFAULT_URL = 'https://github.com/ReeganExE/qrcode-extension'
 
 function Home(): JSX.Element {
   const [url, setUrl] = useState(DEFAULT_URL)
+  const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     chrome.tabs.query(
       {
         active: true,
         lastFocusedWindow: true,
       },
-      (tabs) => setUrl(tabs[0].url)
+      (tabs) => {
+        setUrl(tabs[0].url)
+        setLoaded(true)
+      }
     )
   }, [])
 
@@ -40,18 +29,21 @@ function Home(): JSX.Element {
     setUrl(e.target.value)
   }, [])
 
-  if (!url) {
-    return <>...</>
-  }
-
   return (
     <>
       <StyledContainer>
         <About />
-        <QRCode text={url} />
+        {loaded ? <QRCode text={url} /> : <Placeholder />}
       </StyledContainer>
       <StyledInputContainer>
-        <StyledInput autoFocus onFocus={onFocus} type="text" value={url} onChange={onLinkChange} />
+        <StyledInput
+          autoFocus
+          onFocus={onFocus}
+          type="text"
+          title={url}
+          value={url}
+          onChange={onLinkChange}
+        />
       </StyledInputContainer>
     </>
   )
@@ -69,7 +61,26 @@ const QRCode: React.FC<{ text: string }> = ({ text }) => {
         setDataUrl(err.message)
       })
   }, [text])
-  return <img src={dataUrl} alt={text} />
+  return <img src={dataUrl} alt={text} title={text} />
 }
+
+const StyledContainer = styled.div`
+  margin: 2px auto;
+  text-align: center;
+`
+
+const StyledInput = styled.input`
+  padding: 7px;
+  width: 100%;
+`
+
+const StyledInputContainer = styled.div`
+  padding: 6px 20px 5px 3px;
+`
+
+const Placeholder = styled.div`
+  width: 200px;
+  height: 200px;
+`
 
 export default Home
