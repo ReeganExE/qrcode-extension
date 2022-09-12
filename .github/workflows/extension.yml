@@ -10,7 +10,7 @@ jobs:
     env:
       APP_ID: lejaemboagmjemhpniglggbmdajgmeln
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: install node v12
         uses: actions/setup-node@v1
         with:
@@ -20,10 +20,6 @@ jobs:
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./qr-extension.zip ./dist
-      - uses: actions/upload-artifact@v2
-        with:
-          name: qr-extension
-          path: ./qr-extension.zip
       - name: Upload extension
         uses: Klemensas/chrome-extension-upload-action@v1.3
         with:

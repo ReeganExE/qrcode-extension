@@ -1,6 +1,6 @@
 {
   "permissions": [
-    "tabs"
+    "activeTab"
   ],
   "browser_action": {
     "default_icon": {
